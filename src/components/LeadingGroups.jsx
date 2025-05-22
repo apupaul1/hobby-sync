@@ -11,30 +11,30 @@ const leadingGroups = [
     category: 'Drawing & Painting',
     members: 120,
     location: 'Dhaka, Bangladesh',
-    image: 'https://source.unsplash.com/400x300/?painting,art'
+    image: 'https://i.ibb.co/8qFqGxG/birmingham-museums-trust-w-Kl-Hsoo-RVbg-unsplash.jpg'
   },
   {
     name: 'Game Zone',
     category: 'Video Gaming',
     members: 98,
     location: 'Chattogram, Bangladesh',
-    image: 'https://source.unsplash.com/400x300/?gaming,video-games'
+    image: 'https://i.ibb.co/zH5krxLV/fabio-magalhaes-nm-Tm7kn-Unqs-unsplash.jpg'
   },
   {
     name: 'Culinary Masters',
     category: 'Cooking',
     members: 85,
     location: 'Khulna, Bangladesh',
-    image: 'https://source.unsplash.com/400x300/?cooking,chef'
+    image: 'https://i.ibb.co/dJjL6Swn/ella-olsson-KPDb-Ry-FOTn-E-unsplash.jpg'
   }
 ];
 
 const LeadingGroups = () => {
   return (
     <section className="py-12 px-6">
-              <div className="w-20 mx-auto mt-4">
-          <Lottie animationData={crownAnimation} loop={true} />
-        </div>
+      <div className="w-20 mx-auto mt-4">
+        <Lottie animationData={crownAnimation} loop={true} />
+      </div>
       <div className="text-center mb-10">
         <h2 className="text-4xl font-extrabold text-blue-700">
           Our Engaging & Leading Groups

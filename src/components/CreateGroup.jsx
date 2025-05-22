@@ -28,6 +28,7 @@ const CreateGroup = () => {
                         icon: "success",
                         draggable: true
                     });
+                    form.reset()
                 }
 
             })

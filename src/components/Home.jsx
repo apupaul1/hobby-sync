@@ -6,8 +6,8 @@ import LeadingGroups from './LeadingGroups';
 import FeaturedGroups from './FeaturedGroups';
 
 const Home = () => {
-    const hobbies = useLoaderData();
-    console.log(hobbies);
+    // const hobbies = useLoaderData();
+    // console.log(hobbies);
     return (
         <div className='bg-amber-100'>
             <Banner></Banner>
