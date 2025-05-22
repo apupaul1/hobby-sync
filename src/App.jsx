@@ -17,20 +17,14 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-6 p-6">
-      <h1 className="text-2xl font-bold">React Theme Toggle</h1>
       <label className="flex items-center gap-3 cursor-pointer">
-        <span>🌞</span>
         <input
           type="checkbox"
           className="toggle"
           checked={isDark}
           onChange={handleToggle}
         />
-        <span>🌙</span>
       </label>
-      <p className="text-base">
-        Current theme: <strong>{isDark ? "Dark" : "Light"}</strong>
-      </p>
     </div>
   );
 }

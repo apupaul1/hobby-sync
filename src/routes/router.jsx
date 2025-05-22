@@ -2,6 +2,8 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router';
 import Root from '../layouts/Root';
 import Home from '../components/Home';
+import AllGroups from '../components/AllGroups';
+import CreateGroup from '../components/CreateGroup';
 
 const router = createBrowserRouter([
     {
@@ -13,7 +15,12 @@ const router = createBrowserRouter([
                 Component: Home
             },
         {
-
+            path: 'groups',
+            Component: AllGroups
+        },
+        {
+            path: '/createGroup',
+            Component: CreateGroup
         }
         ]
     }
