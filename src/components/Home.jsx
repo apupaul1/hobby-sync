@@ -2,15 +2,18 @@ import React from 'react';
 import { useLoaderData } from 'react-router';
 import Banner from './Banner';
 import HowItWorks from './HowItWorks';
+import LeadingGroups from './LeadingGroups';
+import FeaturedGroups from './FeaturedGroups';
 
 const Home = () => {
     const hobbies = useLoaderData();
     console.log(hobbies);
     return (
-        <div>
+        <div className='bg-amber-100'>
             <Banner></Banner>
-            <h2>Home</h2>
+            <FeaturedGroups></FeaturedGroups>
             <HowItWorks></HowItWorks>
+            <LeadingGroups></LeadingGroups>
         </div>
     );
 };
