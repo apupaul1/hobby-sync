@@ -4,6 +4,7 @@ import Root from '../layouts/Root';
 import Home from '../components/Home';
 import AllGroups from '../components/AllGroups';
 import CreateGroup from '../components/CreateGroup';
+import Loading from '../components/Loading';
 
 const router = createBrowserRouter([
     {
@@ -12,6 +13,8 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
+                hydrateFallbackElement : <Loading></Loading>,
+                loader: () => fetch('http://localhost:3000/hobbies'),
                 Component: Home
             },
         {
