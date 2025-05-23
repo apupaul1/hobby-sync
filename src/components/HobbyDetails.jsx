@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { Link } from 'react-router';
+import Swal from 'sweetalert2';
 
 const HobbyDetails = () => {
     const hobbyName = useLoaderData();
     const { name, url, catagory, location, members, description, date } = hobbyName;
     const today = new Date();
     const startDate = new Date(date);
+
+    const [joined, setJoined] = useState(()=>{
+        // const status = localStorage.getItem(`joined-${name}`);
+        // return status === 'true'
+    })
     // console.log(hobbyName);
 
-    console.log(today,startDate);
+    // console.log(today,startDate);
 
-    const isGroupActive = () => {
-        const t = startDate>=today;
-        console.log(t);
-    }
+    const isGroupActive = () => startDate >= today;
 
     return (
         <div className='w-11/12 mx-auto'>
@@ -31,28 +34,46 @@ const HobbyDetails = () => {
                     <p className='text-center'>{description}</p>
                     <hr className='border-dashed text-gray-400' />
                     <h2 className="text-center">Group Name: {name}</h2>
-                    <hr className='border-dashed text-gray-400'/>
+                    <hr className='border-dashed text-gray-400' />
                     <p className='text-center'>Catagory: <span className="badge badge-primary font-bold">{catagory}</span> </p>
-                    <hr className='border-dashed text-gray-400'/>
+                    <hr className='border-dashed text-gray-400' />
                     <h2 className='text-center '>Total Team Member: {members}</h2>
-                    <hr className='border-dashed text-gray-400'/>
+                    <hr className='border-dashed text-gray-400' />
                     <p className='text-center'>Meeting Location : {location}</p>
-                    <hr className='border-dashed text-gray-400'/>
+                    <hr className='border-dashed text-gray-400' />
                     <p className='text-center'>Start : {date}</p>
-                    <div className=" justify-end">
+                    <div className="justify-end">
                         {
-                            isGroupActive ?
-                                (<button className="btn btn-primary w-full">Join Group</button>) :
-                                (<p className="text-center text-red-600 font-semibold">
-                                    ❌ This group is no longer active.
-                                </p>)
+                            isGroupActive() ? (
+                                joined ? (
+                                    <button className="btn btn-disabled w-full">Already Joined</button>
+                                ) : (
+                                    <button
+                                        onClick={() => {
+                                            Swal.fire({
+                                                title: "Joined Group Successfully!",
+                                                icon: "success",
+                                                confirmButtonText: "OK",
+                                            });
+                                            setJoined(true);
+                                            // localStorage.setItem(`joined-${name}`,'true');
+                                        }}
+                                        className="btn btn-primary w-full"
+                                    >
+                                        Join Group
+                                    </button>
+                                )
+                            ) : (
+                                <p className="text-center text-red-600 font-semibold">
+                                    This group is no longer active.
+                                </p>
+                            )
                         }
-                        <Link className='flex justify-center' to={'/groups/'}>
-                        <button className='w-full btn btn-neutral mt-2'>Back</button></Link>
-                    </div>
-                    {
 
-                    }
+                        <Link className='flex justify-center' to={'/groups'}>
+                            <button className='w-full btn btn-neutral mt-2'>Go Back</button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
