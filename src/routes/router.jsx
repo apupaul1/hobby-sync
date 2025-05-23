@@ -45,6 +45,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/myGroups',
+                // hydrateFallbackElement: <Loading></Loading>,
+                // loader : ({params}) => fetch(`http://localhost:3000/hobbies/creator/${params.email}`),
                 element:<PrivateRoute>
                     <MyGroup></MyGroup>
                 </PrivateRoute>

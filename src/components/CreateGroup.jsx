@@ -65,7 +65,7 @@ const {user} = use(AuthContext)
                             type="text"
                             className="w-full p-2 bg-base-100 rounded shadow-lg"
                             placeholder="Enter group name"
-                            name='name' />
+                            name='groupName' />
                     </div>
 
                     {/* Hobby Category */}
@@ -130,28 +130,35 @@ const {user} = use(AuthContext)
                     <div>
                         <label className="block text-sm font-medium mb-1">User Name</label>
                         <input
+                        name = "name"
                             type="text"
-                            className="w-full p-2 rounded bg-gray-200 shadow-lg " value={name} readOnly />
+                            className="w-full p-2 rounded bg-gray-200 shadow-lg " 
+                            value={name} readOnly />
                     </div>
 
                     {/* User Email */}
                     <div>
                         <label className="block text-sm font-medium mb-1">User Email</label>
-                        <input type="email" className="w-full p-2 rounded bg-gray-200 shadow-lg " value={email} readOnly />
+                        <input 
+                        name = "email"
+                        type="email" 
+                        className="w-full p-2 rounded bg-gray-200 shadow-lg " 
+                        value={email} readOnly />
                     </div>
 
                     {/* Description - Full Width */}
                     <div className="md:col-span-2">
                         <label className="block text-sm font-medium mb-1">Description</label>
                         <textarea
-                            className="w-full p-2 bg-base-100 shadow-lg  rounded" rows="4"
+                            className="w-full p-2 bg-base-100 shadow-lg rounded" rows="4"
                             placeholder="Enter group description"
                             name='description'></textarea>
                     </div>
 
                     {/* Submit Button - Full Width */}
                     <div className="md:col-span-2 text-center pt-4">
-                        <button type='submit' className="btn btn-primary hover:bg-slate-900">Create</button>
+                        <button type='submit' 
+                        className="btn btn-primary hover:bg-slate-900">Create</button>
                     </div>
 
                 </form>

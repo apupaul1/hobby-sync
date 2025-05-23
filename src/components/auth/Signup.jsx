@@ -3,6 +3,7 @@ import Bg from '/bg.webp';
 import { use } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import { useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -19,6 +20,11 @@ const SignUp = () => {
         createUser(email, password)
             .then((result) => {
                 const user = result.user;
+                Swal.fire({
+                    title: "Successfully Registered",
+                    icon: "success",
+                    draggable: true
+                });
                 updateUser(name, photo)
                     .then(() => {
                         setUser({

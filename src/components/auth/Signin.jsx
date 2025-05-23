@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import Bg from '/bg.webp';
 import { AuthContext } from '../../provider/AuthProvider';
 import { use } from 'react';
+import Swal from 'sweetalert2';
 
 const Signin = () => {
     const { signIn } = use(AuthContext);
@@ -18,10 +19,20 @@ const Signin = () => {
             .then((result) => {
                 const user = result.user;
                 navigate(`${location.state ? location.state : '/'}`);
+                Swal.fire({
+                    title: "Login Successfully!",
+                    icon: "success",
+                    draggable: true
+                });
             })
             .catch((error) => {
-                console.error(error);
-                alert("Login error. Please check your credentials.");
+                const erroressage = error.message;
+                const errorcode = error.code;
+                Swal.fire({
+                    icon: "error",
+                    title: errorcode,
+                    text: erroressage,
+                });
             });
     };
 
