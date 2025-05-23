@@ -5,6 +5,7 @@ import Home from '../components/Home';
 import AllGroups from '../components/AllGroups';
 import CreateGroup from '../components/CreateGroup';
 import Loading from '../components/Loading';
+import HobbyDetails from '../components/HobbyDetails';
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,12 @@ const router = createBrowserRouter([
             {
                 path: '/createGroup',
                 Component: CreateGroup
+            },
+            {
+                path: '/group/:id',
+                hydrateFallbackElement: <Loading></Loading>,
+                loader : ({params}) => fetch(`http://localhost:3000/hobbies/${params.id}`),
+                Component: HobbyDetails
             }
         ]
     }

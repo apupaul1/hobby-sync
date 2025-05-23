@@ -6,7 +6,7 @@ const FeaturedGroups = () => {
     const hobbies = useLoaderData();
     const today = new Date();
 
-    console.log(today);
+    // console.log(today);
 
     const oncomingGroups = hobbies.filter(hobby => {
         const startDate = new Date(hobby.date); 
