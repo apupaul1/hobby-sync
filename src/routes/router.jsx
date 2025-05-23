@@ -6,6 +6,8 @@ import AllGroups from '../components/AllGroups';
 import CreateGroup from '../components/CreateGroup';
 import Loading from '../components/Loading';
 import HobbyDetails from '../components/HobbyDetails';
+import Signin from '../components/auth/Signin';
+import Signup from '../components/auth/Signup';
 
 const router = createBrowserRouter([
     {
@@ -33,6 +35,14 @@ const router = createBrowserRouter([
                 hydrateFallbackElement: <Loading></Loading>,
                 loader : ({params}) => fetch(`http://localhost:3000/hobbies/${params.id}`),
                 Component: HobbyDetails
+            },
+            {
+                path: '/signin',
+                Component: Signin
+            },
+            {
+                path: 'signup',
+                Component: Signup
             }
         ]
     }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const Navbar = () => {
 
@@ -37,7 +37,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex items-center'>
                     <img 
-                    src="/public/logo.jpg" 
+                    src="/logo.jpg" 
                     alt="logo"
                     className="w-10 h-10 rounded-full" />
                     <h2 className="btn btn-ghost text-xl">Hobby<span>Sync</span></h2>
@@ -59,15 +59,15 @@ const Navbar = () => {
                     <li><a>My Groups</a></li>
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end flex gap-4">
                 <input
                     type="checkbox"
                     className="toggle"
                     checked={themeMode}
                     onChange={handleToggle}
                 />
-                <a className="btn">Login</a>
-                <a className="btn">Register</a>
+                <Link to={'/signin'} className="btn">Login</Link>
+                <Link to={'/signup'} className="btn">Register</Link>
 
             </div>
         </div>
