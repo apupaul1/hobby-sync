@@ -115,11 +115,6 @@ const SignUp = () => {
                                     Login
                                 </Link>
                             </p>
-
-                            {/* Google Sign-In */}
-                            <button className="btn btn-outline w-full mt-4 hover:bg-slate-900 hover:text-white">
-                                Sign in using Google
-                            </button>
                         </fieldset>
                     </form>
                 </div>

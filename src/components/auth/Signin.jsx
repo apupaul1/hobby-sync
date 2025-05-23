@@ -3,6 +3,8 @@ import Bg from '/bg.webp';
 import { AuthContext } from '../../provider/AuthProvider';
 import { use } from 'react';
 import Swal from 'sweetalert2';
+import { FcGoogle } from 'react-icons/fc';
+import { FaGithub } from 'react-icons/fa';
 
 const Signin = () => {
     const { signIn } = use(AuthContext);
@@ -94,15 +96,15 @@ const Signin = () => {
                         </p>
                     </form>
 
-                    {/* Uncomment if using Google/GitHub sign in */}
-                    {/* <div className='flex flex-col p-8 pt-0'>
+                    {/* Google/GitHub sign in */}
+                    <div className='flex flex-col p-8 pt-0'>
                         <button className="btn btn-outline mt-4 hover:bg-slate-900 hover:text-white">
                             <FcGoogle size={20} /> Sign in using Google
                         </button>
                         <button className="btn btn-outline mt-4 hover:bg-slate-900 hover:text-white">
                             <FaGithub size={20} /> Sign in using Github
                         </button>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </div>

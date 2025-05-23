@@ -10,6 +10,7 @@ import Signup from '../components/auth/Signup';
 import Signin from '../components/auth/Signin';
 import MyGroup from '../components/MyGroup';
 import PrivateRoute from '../provider/PrivateRoute';
+import ErrorPage from '../components/ErrorPage';
 
 const router = createBrowserRouter([
     {
@@ -58,8 +59,12 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <Signup></Signup>
-            }
+            },
         ]
-    }
+    },
+                {
+                path: '/*',
+                element:<ErrorPage></ErrorPage>
+            }
 ])
 export default router;
