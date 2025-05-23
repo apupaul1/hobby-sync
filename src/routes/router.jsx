@@ -13,18 +13,20 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                hydrateFallbackElement : <Loading></Loading>,
+                hydrateFallbackElement: <Loading></Loading>,
                 loader: () => fetch('http://localhost:3000/hobbies'),
                 Component: Home
             },
-        {
-            path: 'groups',
-            Component: AllGroups
-        },
-        {
-            path: '/createGroup',
-            Component: CreateGroup
-        }
+            {
+                path: 'groups',
+                hydrateFallbackElement: <Loading></Loading>,
+                loader: () => fetch('http://localhost:3000/hobbies'),
+                Component: AllGroups
+            },
+            {
+                path: '/createGroup',
+                Component: CreateGroup
+            }
         ]
     }
 ])

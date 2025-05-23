@@ -1,19 +1,19 @@
 import React from 'react';
 
-const HobbyCard = () => {
+const HobbyCard = ({hobby}) => {
     return (
-        <div>
-            <div className="card bg-base-100 shadow-sm">
-                <figure>
+        // transition-transform duration-300 hover:scale-105
+        <div className=''>
+            <div className="card bg-base-100 shadow-xl  ">
                     <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" />
-                </figure>
+                        src={hobby.url}
+                        alt={hobby.catagory}
+                        className="w-full h-60 object-cover  rounded-t-lg" />
                 <div className="card-body">
-                    <h2 className="card-title">Card Title</h2>
-                    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                    <h2 className="card-title">{hobby.name}</h2>
+                    <p className='w-2/3'>{hobby.description}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+                        <button className="btn btn-primary w-full">Ongoing</button>
                     </div>
                 </div>
             </div>

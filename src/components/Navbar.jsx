@@ -39,9 +39,17 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><NavLink to={'/'}>Home</NavLink></li>
-                    <li><NavLink to={'/groups'}>All Groups</NavLink></li>
-                    <li><NavLink to={'/createGroup'}>Create Group</NavLink></li>
+                    <li><NavLink className={({ isActive }) => (
+                        isActive ? 'text-indigo-600 underline underline-offset-4 decoration-3' : ''
+                    )} to={'/'}>Home</NavLink></li>
+
+                    <li><NavLink className={({ isActive }) => (
+                        isActive ? 'text-indigo-600 underline underline-offset-4 decoration-3 ' : ''
+                    )} to={'/groups'}>All Groups</NavLink></li>
+
+                    <li><NavLink className={({ isActive }) => (
+                        isActive ? 'text-indigo-600 underline underline-offset-4 decoration-3' : ''
+                    )} to={'/createGroup'}>Create Group</NavLink></li>
                     <li><a>My Groups</a></li>
                 </ul>
             </div>

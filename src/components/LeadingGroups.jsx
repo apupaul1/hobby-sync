@@ -31,12 +31,12 @@ const leadingGroups = [
 
 const LeadingGroups = () => {
   return (
-    <section className="py-12 px-6">
+    <section className="py-12 px-6 w-11/12 mx-auto">
       <div className="w-20 mx-auto mt-4">
         <Lottie animationData={crownAnimation} loop={true} />
       </div>
       <div className="text-center mb-10">
-        <h2 className="text-4xl font-extrabold text-blue-700">
+        <h2 className="text-4xl font-extrabold text-black">
           Our Engaging & Leading Groups
         </h2>
       </div>
