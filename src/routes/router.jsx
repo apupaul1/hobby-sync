@@ -6,43 +6,56 @@ import AllGroups from '../components/AllGroups';
 import CreateGroup from '../components/CreateGroup';
 import Loading from '../components/Loading';
 import HobbyDetails from '../components/HobbyDetails';
-import Signin from '../components/auth/Signin';
 import Signup from '../components/auth/Signup';
+import Signin from '../components/auth/Signin';
+import MyGroup from '../components/MyGroup';
+import PrivateRoute from '../provider/PrivateRoute';
 
 const router = createBrowserRouter([
     {
         path: '/',
-        Component: Root,
+        element: <Root></Root>,
         children: [
             {
                 index: true,
                 hydrateFallbackElement: <Loading></Loading>,
                 loader: () => fetch('http://localhost:3000/hobbies'),
-                Component: Home
+                element: <Home></Home>
             },
             {
                 path: 'groups',
                 hydrateFallbackElement: <Loading></Loading>,
                 loader: () => fetch('http://localhost:3000/hobbies'),
-                Component: AllGroups
+                element: <AllGroups></AllGroups>
             },
             {
                 path: '/createGroup',
-                Component: CreateGroup
+                element:<PrivateRoute>
+                    <CreateGroup></CreateGroup>
+                </PrivateRoute>
             },
             {
                 path: '/group/:id',
                 hydrateFallbackElement: <Loading></Loading>,
                 loader : ({params}) => fetch(`http://localhost:3000/hobbies/${params.id}`),
-                Component: HobbyDetails
+                element:<PrivateRoute>
+                    <HobbyDetails></HobbyDetails>
+                </PrivateRoute>
+                
+            },
+            {
+                path: '/myGroups',
+                element:<PrivateRoute>
+                    <MyGroup></MyGroup>
+                </PrivateRoute>
             },
             {
                 path: '/signin',
-                Component: Signin
+                element: <Signin></Signin>
             },
             {
-                path: 'signup',
-                Component: Signup
+                path: '/signup',
+                element: <Signup></Signup>
             }
         ]
     }

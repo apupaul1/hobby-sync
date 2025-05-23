@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useLocation } from 'react-router';
+import { AuthContext } from '../provider/AuthProvider';
+import { use } from 'react';
 
 const Navbar = () => {
+
+    const { user, logOut } = use(AuthContext);
+    const email = user?.email;
+
+    console.log(email);
+
+    const location = useLocation();
+    const currentPath = location.pathname;
 
     const [themeMode, setThemeMode] = useState(
         localStorage.getItem("theme") === "dark"
@@ -17,13 +27,24 @@ const Navbar = () => {
         setThemeMode(e.target.checked);
     }
 
+    const handleLogout = () => {
+
+        logOut()
+            .then(() => {
+                alert("Logout success");
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
 
 
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                    <div tabIndex={0} role="button" className="btn-ghost mr-3 lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
                     </div>
                     <ul
@@ -31,16 +52,23 @@ const Navbar = () => {
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         <li><NavLink to={'/'}>Home</NavLink></li>
                         <li><NavLink to={'/groups'}>All Groups</NavLink></li>
-                        <li><NavLink to={'/createGroup'}>Create Group</NavLink></li>
-                        <li><a>My Groups</a></li>
+                        {
+                            user ? (<div>
+                                <li><NavLink to={'/createGroup'}>Create Group</NavLink></li>
+                                <li><NavLink to={'/myGroup'}>My Groups</NavLink></li>
+
+                                <li><NavLink>My Profile</NavLink></li>
+                                <li onClick={handleLogout} className=''><NavLink>Logout</NavLink></li>
+                            </div>) : ('')
+                        }
                     </ul>
                 </div>
-                <div className='flex items-center'>
-                    <img 
-                    src="/logo.jpg" 
-                    alt="logo"
-                    className="w-10 h-10 rounded-full" />
-                    <h2 className="btn btn-ghost text-xl">Hobby<span>Sync</span></h2>
+                <div className='flex gap-1 items-center'>
+                    <img
+                        src="/logo.jpg"
+                        alt="logo"
+                        className="w-10 h-10 rounded-full" />
+                    <h2 className=" text-2xl flex gap-0 text-blue-600 font-extrabold">Hobby<span className='text-orange-300 font-extrabold'>Sync</span></h2>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -53,10 +81,15 @@ const Navbar = () => {
                         isActive ? 'text-indigo-600 underline underline-offset-4 decoration-3 ' : ''
                     )} to={'/groups'}>All Groups</NavLink></li>
 
-                    <li><NavLink className={({ isActive }) => (
-                        isActive ? 'text-indigo-600 underline underline-offset-4 decoration-3' : ''
-                    )} to={'/createGroup'}>Create Group</NavLink></li>
-                    <li><a>My Groups</a></li>
+                    {
+                        user ? (<div className='flex items-center '> <li><NavLink className={({ isActive }) => (
+                            isActive ? 'text-indigo-600 underline underline-offset-4 decoration-3' : ''
+                        )} to={'/createGroup'}>Create Group</NavLink></li>
+                            <li><NavLink className={({ isActive }) => (
+                                isActive ? 'text-indigo-600 underline underline-offset-4 decoration-3' : ''
+                            )} to={'/myGroups'}>My Groups</NavLink></li></div>) : ('')
+                    }
+
                 </ul>
             </div>
             <div className="navbar-end flex gap-4">
@@ -66,8 +99,35 @@ const Navbar = () => {
                     checked={themeMode}
                     onChange={handleToggle}
                 />
-                <Link to={'/signin'} className="btn">Login</Link>
-                <Link to={'/signup'} className="btn">Register</Link>
+                <div className="avatar hidden md:block">
+                    {
+                        user ? (<div className="w-9 rounded-full">
+                            <img src={user?.photoURL || "https://i.pravatar.cc/150?img=12"} alt="User Avatar" />
+
+                        </div>) : ''
+                    }
+                </div>
+                {
+                    user ? (
+                        <div>
+                            <button onClick={handleLogout} className='btn'>Logout</button>
+                        </div>
+                    ) : (
+                        <div className='flex gap-4'>
+                            {currentPath === '/signup' && (
+                                <Link to="/signin" className="btn btn-primary hover:bg-slate-800">Login</Link>
+                            )}
+                            {currentPath === '/signin' && (
+                                <Link to="/signup" className="btn btn-primary hover:bg-slate-800">Register</Link>
+                            )}
+                            {currentPath !== '/signin' && currentPath !== '/signup' && (
+                                <>
+                                    <Link to="/signin" className="btn btn-primary hover:bg-slate-800">Login</Link>
+                                </>
+                            )}
+                        </div>
+                    )
+                }
 
             </div>
         </div>

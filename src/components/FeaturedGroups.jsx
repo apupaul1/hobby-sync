@@ -10,7 +10,6 @@ const FeaturedGroups = () => {
 
     const oncomingGroups = hobbies.filter(hobby => {
         const startDate = new Date(hobby.date); 
-        
         return startDate <= today;
     });
 

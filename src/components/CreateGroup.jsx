@@ -1,8 +1,14 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import Bg from '../assets/18773518_6031991.jpg'
+import { use } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
 
 const CreateGroup = () => {
+const {user} = use(AuthContext)
+    const email = user?.email;
+    const name = user?.displayName;
+    // console.log(user?.displayName);
 
     const handleAddHobby = (e) => {
         e.preventDefault();
@@ -67,7 +73,8 @@ const CreateGroup = () => {
                         <label className="block text-sm font-medium mb-1">Hobby Category</label>
                         <select
                             className="w-full p-2 bg-base-100 shadow-lg rounded"
-                            name='catagory'>
+                            name='catagory'
+                            required>
                             <option>Select category</option>
                             <option>Drawing & Painting</option>
                             <option>Photography</option>
@@ -85,8 +92,10 @@ const CreateGroup = () => {
                         <label className="block text-sm font-medium mb-1">Meeting Location</label>
                         <input
                             type="text"
-                            className="w-full p-2 bg-base-100  rounded shadow-lg " placeholder="Enter location"
-                            name='location' />
+                            className="w-full p-2 bg-base-100  rounded shadow-lg " 
+                            placeholder="Enter location"
+                            name='location'
+                            required />
                     </div>
 
                     {/* Max Members */}
@@ -95,7 +104,8 @@ const CreateGroup = () => {
                         <input
                             type="number"
                             className="w-full p-2 bg-base-100 rounded shadow-lg " placeholder="Enter max members"
-                            name='members' />
+                            name='members'
+                            required />
                     </div>
 
                     {/* Start Date */}
@@ -121,13 +131,13 @@ const CreateGroup = () => {
                         <label className="block text-sm font-medium mb-1">User Name</label>
                         <input
                             type="text"
-                            className="w-full p-2 rounded bg-gray-100 shadow-lg " value="Your Name" readOnly />
+                            className="w-full p-2 rounded bg-gray-200 shadow-lg " value={name} readOnly />
                     </div>
 
                     {/* User Email */}
                     <div>
                         <label className="block text-sm font-medium mb-1">User Email</label>
-                        <input type="email" className="w-full p-2 rounded bg-gray-100 shadow-lg " value="you@email.com" readOnly />
+                        <input type="email" className="w-full p-2 rounded bg-gray-200 shadow-lg " value={email} readOnly />
                     </div>
 
                     {/* Description - Full Width */}
