@@ -10,9 +10,9 @@ const SingleHobby = ({ singleHobby }) => {
                     alt={singleHobby.catagory}
                     className="w-full h-60 object-cover rounded-t-lg" />
                 <div className="card-body">
-                    <h2 className="card-title">Group Name : {singleHobby.name}</h2>
+                    <h2 className="card-title">{singleHobby.groupName}</h2>
                     <p className='w-4/5'>{singleHobby.description}</p>
-                    <div className=" justify-end">
+                    <div className="justify-end">
                         <Link to={`/group/${singleHobby._id}`}>
                             <button className="btn btn-primary w-full">See More</button>
                         </Link>

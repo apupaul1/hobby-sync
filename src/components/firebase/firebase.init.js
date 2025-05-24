@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA_IMcYMtgIz1IltfGET5s8XpKYAFKUAT4",
-  authDomain: "hobby-sync-app.firebaseapp.com",
-  projectId: "hobby-sync-app",
-  storageBucket: "hobby-sync-app.firebasestorage.app",
-  messagingSenderId: "582291155161",
-  appId: "1:582291155161:web:2b1a8b33b4b0ca587876c8"
+  apiKey:import.meta.env.VITE_apiKey,
+  authDomain:import.meta.env.VITE_authDomain,
+  projectId:import.meta.env.VITE_projectId,
+  storageBucket:import.meta.env.VITE_storageBucket,
+  messagingSenderId:import.meta.env.VITE_messagingSenderId,
+  appId:import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase

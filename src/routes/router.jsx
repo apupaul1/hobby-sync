@@ -11,6 +11,7 @@ import Signin from '../components/auth/Signin';
 import MyGroup from '../components/MyGroup';
 import PrivateRoute from '../provider/PrivateRoute';
 import ErrorPage from '../components/ErrorPage';
+import UpdateGroup from '../components/UpdateGroup';
 
 const router = createBrowserRouter([
     {
@@ -50,6 +51,12 @@ const router = createBrowserRouter([
                 // loader : ({params}) => fetch(`http://localhost:3000/hobbies/creator/${params.email}`),
                 element:<PrivateRoute>
                     <MyGroup></MyGroup>
+                </PrivateRoute>
+            },
+            {
+                path:'/updateGroup',
+                element: <PrivateRoute>
+                    <UpdateGroup></UpdateGroup>
                 </PrivateRoute>
             },
             {

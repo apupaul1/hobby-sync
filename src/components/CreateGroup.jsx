@@ -8,14 +8,12 @@ const CreateGroup = () => {
 const {user} = use(AuthContext)
     const email = user?.email;
     const name = user?.displayName;
-    // console.log(user?.displayName);
 
     const handleAddHobby = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const newHobby = Object.fromEntries(formData.entries())
-        console.log(newHobby);
 
         // Send data to the DB
         fetch('http://localhost:3000/hobbies', {
@@ -28,7 +26,7 @@ const {user} = use(AuthContext)
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    console.log('After adding coffee to db', data);
+                    
                     Swal.fire({
                         title: "Group Successfully Created",
                         icon: "success",
@@ -52,7 +50,7 @@ const {user} = use(AuthContext)
             }}>
             <div className="max-w-5xl mx-auto mt-10 p-8 bg-sky-200 rounded-xl shadow-lg"
             >
-                <h2 className="text-3xl font-bold mb-3 text-center">Create a New Hobby Group</h2>
+                <h2 className="text-3xl text-amber-500 font-bold mb-3 text-center">Create a New Hobby Group</h2>
                 <p className='w-3/4 mx-auto text-center text-sm text-gray-500 mb-12'>Create a new hobby group to connect with like-minded individuals who share your interests. Whether it's art, gaming, reading, or outdoor activities, bring your community together by starting your own group today!</p>
                 <form
                     onSubmit={handleAddHobby}
@@ -60,7 +58,7 @@ const {user} = use(AuthContext)
 
                     {/* Group Name */}
                     <div>
-                        <label className="block text-sm font-medium mb-1">Group Name</label>
+                        <label className="block text-sm font-medium mb-1  text-black">Group Name</label>
                         <input
                             type="text"
                             className="w-full p-2 bg-base-100 rounded shadow-lg"
@@ -70,7 +68,7 @@ const {user} = use(AuthContext)
 
                     {/* Hobby Category */}
                     <div>
-                        <label className="block text-sm font-medium mb-1">Hobby Category</label>
+                        <label className="text-black block text-sm font-medium mb-1">Hobby Category</label>
                         <select
                             className="w-full p-2 bg-base-100 shadow-lg rounded"
                             name='catagory'
@@ -89,7 +87,7 @@ const {user} = use(AuthContext)
 
                     {/* Meeting Location */}
                     <div>
-                        <label className="block text-sm font-medium mb-1">Meeting Location</label>
+                        <label className="block text-sm font-medium mb-1 text-black">Meeting Location</label>
                         <input
                             type="text"
                             className="w-full p-2 bg-base-100  rounded shadow-lg " 
@@ -100,9 +98,9 @@ const {user} = use(AuthContext)
 
                     {/* Max Members */}
                     <div>
-                        <label className="block text-sm font-medium mb-1">Max Members</label>
+                        <label className="block text-sm font-medium mb-1 text-black">Max Members</label>
                         <input
-                            type="number"
+                            type="text"
                             className="w-full p-2 bg-base-100 rounded shadow-lg " placeholder="Enter max members"
                             name='members'
                             required />
@@ -110,49 +108,57 @@ const {user} = use(AuthContext)
 
                     {/* Start Date */}
                     <div>
-                        <label className="block text-sm font-medium mb-1">Start Date</label>
+                        <label className="block text-sm font-medium mb-1 text-black">Start Date</label>
                         <input
                             type="date"
                             className="w-full p-2 bg-base-100 rounded shadow-lg "
-                            name='date' />
+                            name='date'
+                            required />
                     </div>
 
                     {/* Image URL */}
                     <div>
-                        <label className="block text-sm font-medium mb-1">Image URL</label>
+                        <label className="block text-sm font-medium mb-1 text-black">Image URL</label>
                         <input
                             type="url"
-                            className="w-full p-2 bg-base-100  rounded shadow-lg " placeholder="Enter image URL"
-                            name='url' />
+                            className="w-full p-2 bg-base-100  rounded shadow-lg " 
+                            placeholder="Enter image URL"
+                            name='url'
+                            required />
                     </div>
 
                     {/* User Name */}
                     <div>
-                        <label className="block text-sm font-medium mb-1">User Name</label>
+                        <label className="block text-sm font-medium mb-1 text-black">User Name</label>
                         <input
                         name = "name"
                             type="text"
-                            className="w-full p-2 rounded bg-gray-200 shadow-lg " 
-                            value={name} readOnly />
+                            className="w-full p-2 rounded bg-gray-200 shadow-lg text-gray-600 " 
+                            value={name} 
+                            readOnly />
                     </div>
 
                     {/* User Email */}
                     <div>
-                        <label className="block text-sm font-medium mb-1">User Email</label>
+                        <label className="block text-sm font-medium mb-1 text-black">User Email</label>
                         <input 
                         name = "email"
                         type="email" 
-                        className="w-full p-2 rounded bg-gray-200 shadow-lg " 
-                        value={email} readOnly />
+                        className="w-full p-2 rounded bg-gray-200 shadow-lg text-gray-600" 
+                        value={email} 
+                        readOnly />
                     </div>
 
                     {/* Description - Full Width */}
                     <div className="md:col-span-2">
-                        <label className="block text-sm font-medium mb-1">Description</label>
+                        <label className="block text-sm font-medium mb-1 text-black">Description</label>
                         <textarea
-                            className="w-full p-2 bg-base-100 shadow-lg rounded" rows="4"
+                            className="w-full p-2 bg-base-100 shadow-lg rounded" 
+                            rows="4"
                             placeholder="Enter group description"
-                            name='description'></textarea>
+                            name='description'
+                            required>
+                            </textarea>
                     </div>
 
                     {/* Submit Button - Full Width */}

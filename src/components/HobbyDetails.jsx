@@ -10,12 +10,10 @@ const HobbyDetails = () => {
     const startDate = new Date(date);
 
     const [joined, setJoined] = useState(()=>{
-        // const status = localStorage.getItem(`joined-${name}`);
-        // return status === 'true'
+        const status = localStorage.getItem(`joined-${name}`);
+        return status === 'true'
     })
-    // console.log(hobbyName);
 
-    // console.log(today,startDate);
 
     const isGroupActive = () => startDate >= today;
 
@@ -56,7 +54,7 @@ const HobbyDetails = () => {
                                                 confirmButtonText: "OK",
                                             });
                                             setJoined(true);
-                                            // localStorage.setItem(`joined-${name}`,'true');
+                                            localStorage.setItem(`joined-${name}`,'true');
                                         }}
                                         className="btn btn-primary w-full"
                                     >

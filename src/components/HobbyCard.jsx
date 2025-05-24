@@ -4,7 +4,7 @@ const HobbyCard = ({hobby}) => {
     return (
         // transition-transform duration-300 hover:scale-105
         <div className=''>
-            <div className="card bg-base-100 shadow-xl  ">
+            <div className="card bg-base-100 shadow-xl ">
                     <img
                         src={hobby.url}
                         alt={hobby.catagory}

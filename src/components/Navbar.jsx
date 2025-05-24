@@ -9,7 +9,6 @@ const Navbar = () => {
     const { user, logOut } = use(AuthContext);
     const email = user?.email;
 
-    console.log(email);
 
     const location = useLocation();
     const currentPath = location.pathname;
@@ -69,13 +68,14 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <div className='flex gap-1 items-center'>
-                    <img
-                        src="/logo.jpg"
-                        alt="logo"
-                        className="w-10 h-10 rounded-full" />
-                    <h2 className=" text-2xl flex gap-0 text-blue-600 font-extrabold">Hobby<span className='text-orange-300 font-extrabold'>Sync</span></h2>
-                </div>
+                <Link to={'/'}>
+                    <div className='flex gap-1 items-center'>
+                        <img
+                            src="/logo.jpg"
+                            alt="logo"
+                            className="w-10 h-10 rounded-full" />
+                        <h2 className=" text-2xl flex gap-0 text-blue-600 font-extrabold">Hobby<span className='text-orange-300 font-extrabold'>Sync</span></h2>
+                    </div></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -116,7 +116,7 @@ const Navbar = () => {
                 {
                     user ? (
                         <div>
-                            <button onClick={handleLogout} className='btn'>Logout</button>
+                            <button onClick={handleLogout} className='btn btn-primary'>Logout</button>
                         </div>
                     ) : (
                         <div className='flex gap-4'>
