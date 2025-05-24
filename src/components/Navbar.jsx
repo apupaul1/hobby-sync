@@ -10,6 +10,7 @@ const Navbar = () => {
     const email = user?.email;
 
 
+
     const location = useLocation();
     const currentPath = location.pathname;
 
@@ -107,9 +108,15 @@ const Navbar = () => {
                 />
                 <div className="avatar hidden md:block">
                     {
-                        user ? (<div className="w-9 rounded-full">
-                            <img src={user?.photoURL || "https://i.pravatar.cc/150?img=12"} alt="User Avatar" />
-
+                        user ? (<div className="relative group w-10 h-10">
+                            <img
+                                src={user?.photoURL || "https://i.pravatar.cc/150?img=12"}
+                                alt="User Avatar"
+                                className="w-full h-full rounded-full object-cover cursor-pointer"
+                            />
+                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-1 px-2 py-1 bg-gray-800 text-black text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                                {user?.displayName || "User"}
+                            </div>
                         </div>) : ''
                     }
                 </div>

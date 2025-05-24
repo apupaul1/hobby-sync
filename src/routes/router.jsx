@@ -21,40 +21,40 @@ const router = createBrowserRouter([
             {
                 index: true,
                 hydrateFallbackElement: <Loading></Loading>,
-                loader: () => fetch('http://localhost:3000/hobbies'),
+                loader: () => fetch('https://b11-a10-papaya-server-liart.vercel.app/hobbies'),
                 element: <Home></Home>
             },
             {
                 path: 'groups',
                 hydrateFallbackElement: <Loading></Loading>,
-                loader: () => fetch('http://localhost:3000/hobbies'),
+                loader: () => fetch('https://b11-a10-papaya-server-liart.vercel.app/hobbies'),
                 element: <AllGroups></AllGroups>
             },
             {
                 path: '/createGroup',
-                element:<PrivateRoute>
+                element: <PrivateRoute>
                     <CreateGroup></CreateGroup>
                 </PrivateRoute>
             },
             {
                 path: '/group/:id',
                 hydrateFallbackElement: <Loading></Loading>,
-                loader : ({params}) => fetch(`http://localhost:3000/hobbies/${params.id}`),
-                element:<PrivateRoute>
+                loader: ({ params }) => fetch(`https://b11-a10-papaya-server-liart.vercel.app/hobbies/${params.id}`),
+                element: <PrivateRoute>
                     <HobbyDetails></HobbyDetails>
                 </PrivateRoute>
-                
+
             },
             {
                 path: '/myGroups',
                 // hydrateFallbackElement: <Loading></Loading>,
-                // loader : ({params}) => fetch(`http://localhost:3000/hobbies/creator/${params.email}`),
-                element:<PrivateRoute>
+                // loader : ({params}) => fetch(`https://b11-a10-papaya-server-liart.vercel.app/hobbies/creator/${params.email}`),
+                element: <PrivateRoute>
                     <MyGroup></MyGroup>
                 </PrivateRoute>
             },
             {
-                path:'/updateGroup',
+                path: '/updateGroup',
                 element: <PrivateRoute>
                     <UpdateGroup></UpdateGroup>
                 </PrivateRoute>
@@ -69,9 +69,9 @@ const router = createBrowserRouter([
             },
         ]
     },
-                {
-                path: '/*',
-                element:<ErrorPage></ErrorPage>
-            }
+    {
+        path: '/*',
+        element: <ErrorPage></ErrorPage>
+    }
 ])
 export default router;

@@ -1,12 +1,21 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# 🌟 HobbyHub - A Local Hobby Group Organizer
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+HobbyHub is a dynamic single-page web application designed to bring people together based on shared interests. Users can discover, create, and manage hobby-based groups such as hiking, painting, reading clubs, and more.
 
-## Expanding the ESLint configuration
+🔗 **Live Website**: https://hobby-sync-app.web.app/
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Features
+
+- 🔐 **Authentication System** with Email/Password and Google Login using Firebase.
+- 🧭 **Private Routes** for group creation, viewing personal groups, and editing.
+- 📱 **Fully Responsive Design** optimized for mobile, tablet, and desktop.
+- 🧩 **Dynamic Group Management**: Create, update, delete, and join hobby groups.
+- 🎨 **Dark/Light Theme Toggle** for a better user experience.
+- 📅 **Join Restrictions**: Users can't join expired groups (based on start date).
+- ⚙️ **Environment Variables** securely hide Firebase and MongoDB credentials.
+
+

@@ -11,7 +11,7 @@ const MyGroup = () => {
 
     useEffect(() => {
         if (name) {
-            fetch(`http://localhost:3000/hobbies/creator/${name}`)
+            fetch(`https://b11-a10-papaya-server-liart.vercel.app/hobbies/creator/${name}`)
                 .then(res => res.json())
                 .then(data => setMyHobby(data));
         }
@@ -28,7 +28,7 @@ const MyGroup = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/hobbies/${id}`, {
+                fetch(`https://b11-a10-papaya-server-liart.vercel.app/hobbies/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())

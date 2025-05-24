@@ -5,7 +5,7 @@ import { use } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 
 const CreateGroup = () => {
-const {user} = use(AuthContext)
+    const { user } = use(AuthContext)
     const email = user?.email;
     const name = user?.displayName;
 
@@ -16,7 +16,7 @@ const {user} = use(AuthContext)
         const newHobby = Object.fromEntries(formData.entries())
 
         // Send data to the DB
-        fetch('http://localhost:3000/hobbies', {
+        fetch('https://b11-a10-papaya-server-liart.vercel.app/hobbies', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -26,7 +26,7 @@ const {user} = use(AuthContext)
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    
+
                     Swal.fire({
                         title: "Group Successfully Created",
                         icon: "success",
@@ -90,7 +90,7 @@ const {user} = use(AuthContext)
                         <label className="block text-sm font-medium mb-1 text-black">Meeting Location</label>
                         <input
                             type="text"
-                            className="w-full p-2 bg-base-100  rounded shadow-lg " 
+                            className="w-full p-2 bg-base-100  rounded shadow-lg "
                             placeholder="Enter location"
                             name='location'
                             required />
@@ -121,7 +121,7 @@ const {user} = use(AuthContext)
                         <label className="block text-sm font-medium mb-1 text-black">Image URL</label>
                         <input
                             type="url"
-                            className="w-full p-2 bg-base-100  rounded shadow-lg " 
+                            className="w-full p-2 bg-base-100  rounded shadow-lg "
                             placeholder="Enter image URL"
                             name='url'
                             required />
@@ -131,40 +131,40 @@ const {user} = use(AuthContext)
                     <div>
                         <label className="block text-sm font-medium mb-1 text-black">User Name</label>
                         <input
-                        name = "name"
+                            name="name"
                             type="text"
-                            className="w-full p-2 rounded bg-gray-200 shadow-lg text-gray-600 " 
-                            value={name} 
+                            className="w-full p-2 rounded bg-gray-200 shadow-lg text-gray-600 "
+                            value={name}
                             readOnly />
                     </div>
 
                     {/* User Email */}
                     <div>
                         <label className="block text-sm font-medium mb-1 text-black">User Email</label>
-                        <input 
-                        name = "email"
-                        type="email" 
-                        className="w-full p-2 rounded bg-gray-200 shadow-lg text-gray-600" 
-                        value={email} 
-                        readOnly />
+                        <input
+                            name="email"
+                            type="email"
+                            className="w-full p-2 rounded bg-gray-200 shadow-lg text-gray-600"
+                            value={email}
+                            readOnly />
                     </div>
 
                     {/* Description - Full Width */}
                     <div className="md:col-span-2">
                         <label className="block text-sm font-medium mb-1 text-black">Description</label>
                         <textarea
-                            className="w-full p-2 bg-base-100 shadow-lg rounded" 
+                            className="w-full p-2 bg-base-100 shadow-lg rounded"
                             rows="4"
                             placeholder="Enter group description"
                             name='description'
                             required>
-                            </textarea>
+                        </textarea>
                     </div>
 
                     {/* Submit Button - Full Width */}
                     <div className="md:col-span-2 text-center pt-4">
-                        <button type='submit' 
-                        className="btn btn-primary hover:bg-slate-900">Create</button>
+                        <button type='submit'
+                            className="btn btn-primary hover:bg-slate-900">Create</button>
                     </div>
 
                 </form>

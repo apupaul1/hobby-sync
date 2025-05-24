@@ -7,7 +7,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 
 const Signin = () => {
-    const { signIn } = use(AuthContext);
+    const { signIn, googleSignIn } = use(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -37,6 +37,17 @@ const Signin = () => {
                 });
             });
     };
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then((result) => {
+                navigate(`${location.state ? location.state : "/"}`)
+            })
+            .catch((error) => {
+                console.log(error);
+            }
+            )
+    }
 
     return (
         <div
@@ -98,7 +109,8 @@ const Signin = () => {
 
                     {/* Google/GitHub sign in */}
                     <div className='flex flex-col p-8 pt-0'>
-                        <button className="btn btn-outline mt-4 hover:bg-slate-900 hover:text-white">
+                        <button onClick={handleGoogleSignIn}
+                            className="btn btn-outline mt-4 hover:bg-slate-900 hover:text-white">
                             <FcGoogle size={20} /> Sign in using Google
                         </button>
                         <button className="btn btn-outline mt-4 hover:bg-slate-900 hover:text-white">

@@ -44,7 +44,7 @@ const UpdateGroup = ({ id, currentData, onUpdateSuccess }) => {
             name,
         };
 
-        fetch(`http://localhost:3000/hobbies/${id}`, {
+        fetch(`https://b11-a10-papaya-server-liart.vercel.app/hobbies/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updateHobby),
@@ -52,7 +52,7 @@ const UpdateGroup = ({ id, currentData, onUpdateSuccess }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    fetch(`http://localhost:3000/hobbies/${id}`)
+                    fetch(`https://b11-a10-papaya-server-liart.vercel.app/hobbies/${id}`)
                         .then(res => res.json())
                         .then(updatedGroup => {
                             onUpdateSuccess(updatedGroup);
