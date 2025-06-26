@@ -8,7 +8,7 @@ const FeaturedGroups = () => {
 
 
     const oncomingGroups = hobbies.filter(hobby => {
-        const startDate = new Date(hobby.date); 
+        const startDate = new Date(hobby.date);
         return startDate <= today;
     });
 
@@ -19,8 +19,8 @@ const FeaturedGroups = () => {
             {oncomingGroups.length === 0 ? (
                 <p className="text-center text-gray-500">No upcoming groups available.</p>
             ) : (
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 '>
-                    {oncomingGroups.map(hobby => (
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 '>
+                    {oncomingGroups.slice(0, 6).map(hobby => (
                         <HobbyCard key={hobby._id} hobby={hobby} />
                     ))}
                 </div>

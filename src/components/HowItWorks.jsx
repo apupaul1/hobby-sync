@@ -5,8 +5,8 @@ import { FcInvite } from "react-icons/fc";
 
 const HowItWorks = () => {
   return (
-    <section className="py-10 px-4 text-center w-11/12 mx-auto mt-7">
-      <h2 className="text-3xl font-bold mb-6 text-slate-700">How It Works</h2>
+    <section className=" px-4 text-center w-11/12 mx-auto ">
+      <h2 className="text-3xl font-bold  text-slate-700 my-12">How It Works</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 

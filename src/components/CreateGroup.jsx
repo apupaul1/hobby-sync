@@ -48,7 +48,7 @@ const CreateGroup = () => {
                 height: 'h-full',
                 width: '100%',
             }}>
-            <div className="max-w-5xl mx-auto mt-10 p-8 bg-sky-200 rounded-xl shadow-lg"
+            <div className="max-w-5xl mx-auto mt-10 p-8 bg-gray-200 rounded-xl shadow-lg"
             >
                 <h2 className="text-3xl text-amber-500 font-bold mb-3 text-center">Create a New Hobby Group</h2>
                 <p className='w-3/4 mx-auto text-center text-sm text-gray-500 mb-12'>Create a new hobby group to connect with like-minded individuals who share your interests. Whether it's art, gaming, reading, or outdoor activities, bring your community together by starting your own group today!</p>

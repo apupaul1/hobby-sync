@@ -12,6 +12,8 @@ import MyGroup from '../components/MyGroup';
 import PrivateRoute from '../provider/PrivateRoute';
 import ErrorPage from '../components/ErrorPage';
 import UpdateGroup from '../components/UpdateGroup';
+import Dashboard from '../layouts/Dashboard';
+import DashHomePage from '../components/DashBoard/DashHomePage';
 
 const router = createBrowserRouter([
     {
@@ -67,6 +69,18 @@ const router = createBrowserRouter([
                 path: '/signup',
                 element: <Signup></Signup>
             },
+        ]
+    },
+    {
+        path: '/',
+        element: <PrivateRoute>
+            <Dashboard></Dashboard>
+        </PrivateRoute>,
+        children: [
+            {
+                path: 'dashboard',
+                element: <DashHomePage></DashHomePage>
+            }
         ]
     },
     {

@@ -11,7 +11,7 @@ const HobbyCard = ({hobby}) => {
                         className="w-full h-60 object-cover  rounded-t-lg" />
                 <div className="card-body">
                     <h2 className="card-title">{hobby.name}</h2>
-                    <p className='w-2/3'>{hobby.description}</p>
+                    <p className=''>{hobby.description}</p>
                     <div className="card-actions justify-end">
                         <button className="btn btn-primary w-full">Ongoing</button>
                     </div>

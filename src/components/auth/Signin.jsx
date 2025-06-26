@@ -41,7 +41,7 @@ const Signin = () => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then((result) => {
-                navigate(`${location.state ? location.state : "/"}`)
+                navigate(`${location.state ? location.state : "/dashboard"}`)
             })
             .catch((error) => {
                 console.log(error);

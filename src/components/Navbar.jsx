@@ -3,6 +3,8 @@ import { Link, NavLink, useLocation } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import { use } from 'react';
 import Swal from 'sweetalert2';
+import { Sun, Moon } from 'lucide-react';
+
 
 const Navbar = () => {
 
@@ -60,8 +62,8 @@ const Navbar = () => {
                         <li><NavLink to={'/groups'}>All Groups</NavLink></li>
                         {
                             user ? (<div>
-                                <li><NavLink to={'/createGroup'}>Create Group</NavLink></li>
-                                <li><NavLink to={'/myGroup'}>My Groups</NavLink></li>
+                                <li><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
+                                {/* <li><NavLink to={'/myGroup'}>My Groups</NavLink></li> */}
 
                                 <li><NavLink>My Profile</NavLink></li>
                                 <li onClick={handleLogout} className=''><NavLink>Logout</NavLink></li>
@@ -89,23 +91,36 @@ const Navbar = () => {
                     )} to={'/groups'}>All Groups</NavLink></li>
 
                     {
-                        user ? (<div className='flex items-center '> <li><NavLink className={({ isActive }) => (
-                            isActive ? 'text-indigo-600 underline underline-offset-4 decoration-3' : ''
-                        )} to={'/createGroup'}>Create Group</NavLink></li>
-                            <li><NavLink className={({ isActive }) => (
-                                isActive ? 'text-indigo-600 underline underline-offset-4 decoration-3' : ''
-                            )} to={'/myGroups'}>My Groups</NavLink></li></div>) : ('')
+                        user ? (
+                            <div className='flex items-center '>
+                                <li>
+                                    <NavLink
+                                        className={({ isActive }) => (
+                                            isActive ? 'text-indigo-600 underline underline-offset-4 decoration-3' : ''
+                                        )} to={'/dashboard'}>Dashboard</NavLink></li>
+
+                                {/* <li>
+                                    <NavLink 
+                                    className={({ isActive }) => (
+                                    isActive ? 'text-indigo-600 underline underline-offset-4 decoration-3' : ''
+                                )} to={'/myGroups'}>My Groups</NavLink></li> */}
+
+                            </div>
+
+                        ) : ('')
                     }
 
                 </ul>
             </div>
             <div className="navbar-end flex gap-4">
-                <input
-                    type="checkbox"
-                    className="toggle"
-                    checked={themeMode}
-                    onChange={handleToggle}
-                />
+                <button
+                    onClick={() => setThemeMode(!themeMode)}
+                    className="text-xl p-2 rounded-full hover:bg-base-200 transition"
+                    aria-label="Toggle Theme"
+                >
+                    {themeMode ? <Moon size={20} /> : <Sun size={20} />}
+                </button>
+
                 <div className="avatar hidden md:block">
                     {
                         user ? (<div className="relative group w-10 h-10">

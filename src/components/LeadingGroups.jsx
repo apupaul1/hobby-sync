@@ -35,8 +35,8 @@ const LeadingGroups = () => {
       <div className="w-20 mx-auto mt-4">
         <Lottie animationData={crownAnimation} loop={true} />
       </div>
-      <div className="text-center mb-10">
-        <h2 className="text-4xl font-extrabold mt-4 text-slate-700">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-extrabold mt-4 text-slate-700 my-12">
           Our Engaging & Leading Groups
         </h2>
       </div>
