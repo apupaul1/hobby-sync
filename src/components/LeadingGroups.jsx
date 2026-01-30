@@ -36,7 +36,8 @@ const LeadingGroups = () => {
         <Lottie animationData={crownAnimation} loop={true} />
       </div>
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-extrabold mt-4 text-slate-700 my-12">
+        {/* FIXED: Changed text-slate-700 to text-base-content */}
+        <h2 className="text-3xl font-extrabold mt-4 text-base-content my-12">
           Our Engaging & Leading Groups
         </h2>
       </div>
@@ -44,8 +45,12 @@ const LeadingGroups = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {leadingGroups.map((group, index) => (
           <Slide direction="up" triggerOnce key={index}>
+            {/* FIXED: 
+                1. Changed bg-white to bg-base-200 (Matches your other cards) 
+                2. Added transition-colors for smooth theme switching
+            */}
             <div
-              className="bg-white shadow-xl rounded-xl overflow-hidden group relative"
+              className="bg-base-200 shadow-xl rounded-xl overflow-hidden group relative transition-colors duration-300"
               data-tip={group.category}
             >
               <img
@@ -54,8 +59,8 @@ const LeadingGroups = () => {
                 className="w-full h-60 object-cover transition-transform duration-300 group-hover:scale-105"
               />
               <div className="p-5">
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">
-
+                {/* FIXED: Changed text-gray-800 to text-base-content */}
+                <h3 className="text-2xl font-bold text-base-content mb-2">
                   <Typewriter
                     words={[`${group.name}`]}
                     loop={true}
@@ -66,8 +71,10 @@ const LeadingGroups = () => {
                     delaySpeed={1000}
                   />
                 </h3>
-                <p className="text-sm text-gray-500 mb-1">📍 {group.location}</p>
-                <p className="text-sm text-gray-600">👥 {group.members} Members</p>
+                {/* FIXED: Changed text-gray-500 to text-base-content/60 */}
+                <p className="text-sm text-base-content/60 mb-1">📍 {group.location}</p>
+                {/* FIXED: Changed text-gray-600 to text-base-content/70 */}
+                <p className="text-sm text-base-content/70">👥 {group.members} Members</p>
               </div>
               <Tooltip />
             </div>

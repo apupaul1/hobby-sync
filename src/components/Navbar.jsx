@@ -11,8 +11,6 @@ const Navbar = () => {
     const { user, logOut } = use(AuthContext);
     const email = user?.email;
 
-
-
     const location = useLocation();
     const currentPath = location.pathname;
 
@@ -27,7 +25,7 @@ const Navbar = () => {
     }, [themeMode]);
 
     const handleToggle = (e) => {
-        setThemeMode(e.target.checked);
+        setThemeMode(!themeMode);
     }
 
     const handleLogout = () => {
@@ -114,7 +112,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-end flex gap-4">
                 <button
-                    onClick={() => setThemeMode(!themeMode)}
+                    onClick={handleToggle}
                     className="text-xl p-2 rounded-full hover:bg-base-200 transition"
                     aria-label="Toggle Theme"
                 >

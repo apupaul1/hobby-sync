@@ -26,7 +26,6 @@ const CreateGroup = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-
                     Swal.fire({
                         title: "Group Successfully Created",
                         icon: "success",
@@ -34,46 +33,51 @@ const CreateGroup = () => {
                     });
                     form.reset()
                 }
-
             })
     }
 
     return (
         <div
-            className='bg-slate-200 p-12'
+            className='bg-base-200 p-12 min-h-screen flex items-center justify-center'
             style={{
                 backgroundImage: `url(${Bg})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                height: 'h-full',
-                width: '100%',
             }}>
-            <div className="max-w-5xl mx-auto mt-10 p-8 bg-gray-200 rounded-xl shadow-lg"
-            >
-                <h2 className="text-3xl text-amber-500 font-bold mb-3 text-center">Create a New Hobby Group</h2>
-                <p className='w-3/4 mx-auto text-center text-sm text-gray-500 mb-12'>Create a new hobby group to connect with like-minded individuals who share your interests. Whether it's art, gaming, reading, or outdoor activities, bring your community together by starting your own group today!</p>
+            
+            <div className="max-w-5xl w-full mx-auto p-8 bg-base-100/95 backdrop-blur-sm rounded-xl shadow-xl transition-colors duration-300">
+                <h2 className="text-3xl text-primary font-bold mb-3 text-center">Create a New Hobby Group</h2>
+                
+                {/* FIXED: text-gray-500 -> text-base-content/60 */}
+                <p className='w-3/4 mx-auto text-center text-sm text-base-content/60 mb-12'>
+                    Create a new hobby group to connect with like-minded individuals who share your interests. Whether it's art, gaming, reading, or outdoor activities, bring your community together by starting your own group today!
+                </p>
+                
                 <form
                     onSubmit={handleAddHobby}
                     className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     {/* Group Name */}
                     <div>
-                        <label className="block text-sm font-medium mb-1  text-black">Group Name</label>
+                        {/* FIXED: text-black -> text-base-content */}
+                        <label className="block text-sm font-medium mb-1 text-base-content">Group Name</label>
                         <input
                             type="text"
-                            className="w-full p-2 bg-base-100 rounded shadow-lg"
+                            // FIXED: Added 'input input-bordered bg-base-200' for better dark mode inputs
+                            className="input input-bordered w-full bg-base-200 focus:outline-none focus:border-primary"
                             placeholder="Enter group name"
-                            name='groupName' />
+                            name='groupName' 
+                        />
                     </div>
 
                     {/* Hobby Category */}
                     <div>
-                        <label className="text-black block text-sm font-medium mb-1">Hobby Category</label>
+                        <label className="text-base-content block text-sm font-medium mb-1">Hobby Category</label>
                         <select
-                            className="w-full p-2 bg-base-100 shadow-lg rounded"
+                            className="select select-bordered w-full bg-base-200 focus:outline-none focus:border-primary"
                             name='catagory'
                             required>
-                            <option>Select category</option>
+                            <option disabled selected>Select category</option>
                             <option>Drawing & Painting</option>
                             <option>Photography</option>
                             <option>Video Gaming</option>
@@ -87,10 +91,10 @@ const CreateGroup = () => {
 
                     {/* Meeting Location */}
                     <div>
-                        <label className="block text-sm font-medium mb-1 text-black">Meeting Location</label>
+                        <label className="block text-sm font-medium mb-1 text-base-content">Meeting Location</label>
                         <input
                             type="text"
-                            className="w-full p-2 bg-base-100  rounded shadow-lg "
+                            className="input input-bordered w-full bg-base-200 focus:outline-none focus:border-primary"
                             placeholder="Enter location"
                             name='location'
                             required />
@@ -98,63 +102,64 @@ const CreateGroup = () => {
 
                     {/* Max Members */}
                     <div>
-                        <label className="block text-sm font-medium mb-1 text-black">Max Members</label>
+                        <label className="block text-sm font-medium mb-1 text-base-content">Max Members</label>
                         <input
                             type="text"
-                            className="w-full p-2 bg-base-100 rounded shadow-lg " placeholder="Enter max members"
+                            className="input input-bordered w-full bg-base-200 focus:outline-none focus:border-primary"
+                            placeholder="Enter max members"
                             name='members'
                             required />
                     </div>
 
                     {/* Start Date */}
                     <div>
-                        <label className="block text-sm font-medium mb-1 text-black">Start Date</label>
+                        <label className="block text-sm font-medium mb-1 text-base-content">Start Date</label>
                         <input
                             type="date"
-                            className="w-full p-2 bg-base-100 rounded shadow-lg "
+                            className="input input-bordered w-full bg-base-200 focus:outline-none focus:border-primary"
                             name='date'
                             required />
                     </div>
 
                     {/* Image URL */}
                     <div>
-                        <label className="block text-sm font-medium mb-1 text-black">Image URL</label>
+                        <label className="block text-sm font-medium mb-1 text-base-content">Image URL</label>
                         <input
                             type="url"
-                            className="w-full p-2 bg-base-100  rounded shadow-lg "
+                            className="input input-bordered w-full bg-base-200 focus:outline-none focus:border-primary"
                             placeholder="Enter image URL"
                             name='url'
                             required />
                     </div>
 
-                    {/* User Name */}
+                    {/* User Name (Read Only) */}
                     <div>
-                        <label className="block text-sm font-medium mb-1 text-black">User Name</label>
+                        <label className="block text-sm font-medium mb-1 text-base-content">User Name</label>
                         <input
                             name="name"
                             type="text"
-                            className="w-full p-2 rounded bg-gray-200 shadow-lg text-gray-600 "
+                            // FIXED: bg-gray-200 -> bg-base-300 (Darker distinct background for read-only)
+                            className="input input-bordered w-full bg-base-300 text-base-content/70 cursor-not-allowed"
                             value={name}
                             readOnly />
                     </div>
 
-                    {/* User Email */}
+                    {/* User Email (Read Only) */}
                     <div>
-                        <label className="block text-sm font-medium mb-1 text-black">User Email</label>
+                        <label className="block text-sm font-medium mb-1 text-base-content">User Email</label>
                         <input
                             name="email"
                             type="email"
-                            className="w-full p-2 rounded bg-gray-200 shadow-lg text-gray-600"
+                            className="input input-bordered w-full bg-base-300 text-base-content/70 cursor-not-allowed"
                             value={email}
                             readOnly />
                     </div>
 
                     {/* Description - Full Width */}
                     <div className="md:col-span-2">
-                        <label className="block text-sm font-medium mb-1 text-black">Description</label>
+                        <label className="block text-sm font-medium mb-1 text-base-content">Description</label>
                         <textarea
-                            className="w-full p-2 bg-base-100 shadow-lg rounded"
-                            rows="4"
+                            className="textarea textarea-bordered w-full bg-base-200 h-24 focus:outline-none focus:border-primary"
                             placeholder="Enter group description"
                             name='description'
                             required>
@@ -164,7 +169,10 @@ const CreateGroup = () => {
                     {/* Submit Button - Full Width */}
                     <div className="md:col-span-2 text-center pt-4">
                         <button type='submit'
-                            className="btn btn-primary hover:bg-slate-900">Create</button>
+                            // FIXED: Removed hover:bg-slate-900. btn-primary handles hover automatically.
+                            className="btn btn-primary w-full md:w-1/2 text-lg">
+                            Create Group
+                        </button>
                     </div>
 
                 </form>

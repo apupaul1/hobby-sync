@@ -4,12 +4,12 @@ import {
     Home,
     PlusCircle,
     User,
-    Settings,
     LogOut,
-    HelpCircle
+    X, // Added Close icon for mobile UX
 } from 'lucide-react';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router';
 
 const SideBar = () => {
     const { user, logOut } = use(AuthContext);
@@ -30,30 +30,39 @@ const SideBar = () => {
     };
 
     return (
-        <aside className="bg-slate-900 text-white min-h-screen w-64 px-6 py-8 transition-all duration-300">
-            {/* Logo Section */}
-            <div className="flex items-center gap-3 mb-10">
-                <img src="/logo.jpg" alt="HobbySync Logo" className="w-10 h-10 rounded-full" />
-                <h2 className="text-2xl font-extrabold text-blue-600">
-                    Hobby<span className="text-orange-300">Sync</span>
-                </h2>
+        <aside className="bg-base-200 text-base-content min-h-screen w-64 px-6 py-8 transition-colors duration-300 border-r border-base-300 flex flex-col">
+            
+            {/* Header with Logo & Mobile Close Button */}
+            <div className="flex items-center justify-between mb-10 relative">
+                <Link to={'/'} className="flex items-center gap-3">
+                    <img src="/logo.jpg" alt="HobbySync Logo" className="w-10 h-10 rounded-full" />
+                    <h2 className="text-2xl font-extrabold text-primary">
+                        Hobby<span className="text-orange-400">Sync</span>
+                    </h2>
+                </Link>
+                <label 
+                    htmlFor="dashboard-drawer" 
+                    className="btn btn-circle btn-ghost absolute -top-6 -right-6 btn-sm lg:hidden"
+                >
+                    <X size={20} />
+                </label>
             </div>
 
-            {/* User Greeting */}
             <div className="mb-10">
-                <p className="text-sm text-gray-400">Welcome back,</p>
-                <h3 className="text-lg font-semibold">{user?.displayName || 'User'}</h3>
+                <p className="text-sm text-base-content/60">Welcome back,</p>
+                <h3 className="text-lg font-semibold truncate">{user?.displayName || 'User'}</h3>
             </div>
 
-<hr className="my-8 border-slate-700" />
+            <hr className="my-8 border-base-content/10" />
+
             {/* Navigation Links */}
-            <nav className="space-y-2">
+            <nav className="space-y-2 flex-grow">                
                 <NavLink
                     to="/"
                     className={({ isActive }) =>
                         `flex items-center gap-3 px-4 py-2 rounded-md transition-all ${isActive
-                            ? 'bg-blue-600 text-white font-semibold'
-                            : 'hover:bg-slate-800 text-gray-300'
+                            ? 'bg-primary text-primary-content font-semibold shadow-md'
+                            : 'hover:bg-base-300 text-base-content/70 hover:text-base-content'
                         }`
                     }
                 >
@@ -64,8 +73,8 @@ const SideBar = () => {
                     to="/createGroup"
                     className={({ isActive }) =>
                         `flex items-center gap-3 px-4 py-2 rounded-md transition-all ${isActive
-                            ? 'bg-blue-600 text-white font-semibold'
-                            : 'hover:bg-slate-800 text-gray-300'
+                            ? 'bg-primary text-primary-content font-semibold shadow-md'
+                            : 'hover:bg-base-300 text-base-content/70 hover:text-base-content'
                         }`
                     }
                 >
@@ -73,11 +82,11 @@ const SideBar = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/myGroups"
+                    to="/dashboard"
                     className={({ isActive }) =>
                         `flex items-center gap-3 px-4 py-2 rounded-md transition-all ${isActive
-                            ? 'bg-blue-600 text-white font-semibold'
-                            : 'hover:bg-slate-800 text-gray-300'
+                            ? 'bg-primary text-primary-content font-semibold shadow-md'
+                            : 'hover:bg-base-300 text-base-content/70 hover:text-base-content'
                         }`
                     }
                 >
@@ -85,29 +94,20 @@ const SideBar = () => {
                 </NavLink>
             </nav>
 
-            <hr className="my-8 border-slate-700" />
+            <hr className="my-8 border-base-content/10" />
 
             {/* Utility Actions */}
-            <div className="space-y-3 text-gray-400 text-sm">
-                <div className="flex items-center gap-3 hover:text-white transition cursor-pointer">
-                    <HelpCircle size={18} />
-                    Support
-                </div>
-                <div className="flex items-center gap-3 hover:text-white transition cursor-pointer">
-                    <Settings size={18} />
-                    Settings
-                </div>
-                <div
+            <div className="space-y-3 text-base-content/60 text-sm mt-auto">
+                <button
                     onClick={handleLogout}
-                    className="flex items-center gap-3 hover:text-red-400 transition cursor-pointer"
+                    className="flex w-full items-center gap-3 hover:text-error transition cursor-pointer p-2 rounded-md hover:bg-base-300"
                 >
                     <LogOut size={18} />
                     Logout
-                </div>
+                </button>
             </div>
         </aside>
     );
 };
-
 
 export default SideBar;

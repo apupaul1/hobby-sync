@@ -57,30 +57,41 @@ const MyGroup = () => {
 
     return (
         <div className='mb-16'>
-            <h2 className="text-2xl font-bold my-12 text-center">My Hobby Groups</h2>
+            {/* FIXED: Changed text color to generic base-content */}
+            <h2 className="text-2xl font-bold my-12 text-center text-base-content">My Hobby Groups</h2>
+            
             {myHobby.length === 0 ? (
                 <div className='text-center'>
-                    <p className="text-center my-4 text-gray-500">No groups found.</p>
+                    {/* FIXED: Muted text for dark mode */}
+                    <p className="text-center my-4 text-base-content/60">No groups found.</p>
                     <Link to={'/createGroup'}>
-                        <button className='btn btn-neutral'>
+                        <button className='btn btn-primary'>
                             Create Group
                         </button>
                     </Link>
                 </div>
             ) : (
-                <div className="overflow-x-auto w-11/12 mx-auto bg-amber-100 p-4 rounded-box border border-base-content/5">
+                /* FIXED: 
+                   1. bg-amber-100 -> bg-base-100 (White in Light / Slate 900 in Dark)
+                   2. Added shadow and border for better separation
+                */
+                <div className="overflow-x-auto w-11/12 mx-auto bg-base-100 p-4 rounded-xl border border-base-300 shadow-sm">
                     <table className="table">
+                        {/* Head */}
                         <thead>
-                            <tr className='text-black'>
+                            {/* FIXED: text-black -> text-base-content/70 */}
+                            <tr className='text-base-content/70 border-b-base-300'>
                                 <th>Group</th>
                                 <th>Category & Members</th>
                                 <th>Created By</th>
                                 <th className='text-center'>Actions</th>
                             </tr>
                         </thead>
-                        <tbody className='text-black'>
+                        {/* Body */}
+                        <tbody className='text-base-content'>
                             {myHobby.map((item) => (
-                                <tr key={item._id}>
+                                /* FIXED: Added hover effect and border color adjustment */
+                                <tr key={item._id} className="border-b-base-200 hover:bg-base-200/50 transition-colors">
                                     <td>
                                         <div className="flex items-center gap-3">
                                             <div className="avatar">
@@ -93,22 +104,24 @@ const MyGroup = () => {
                                             </div>
                                             <div>
                                                 <div className="font-bold">{item.groupName}</div>
-                                                <div className="text-sm opacity-80">Location : {item.location}</div>
+                                                <div className="text-sm opacity-60">Location : {item.location}</div>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
                                         {item.catagory}
                                         <br />
-                                        <span className='opacity-80'>Total Members : {item.members}</span>
+                                        <span className='opacity-60 text-xs'>Total Members : {item.members}</span>
                                     </td>
                                     <td>{item.name}</td>
                                     <th className='flex justify-center items-center mt-2'>
                                         <div className="flex gap-2 justify-between">
-                                            <button className="btn btn-info"
+                                            
+                                            <button className="btn btn-info btn-sm text-white"
                                                 onClick={() => openModal(item._id)}>
                                                 Update
                                             </button>
+                                            
                                             <UpdateGroup
                                                 id={item._id}
                                                 currentData={item}
@@ -120,9 +133,10 @@ const MyGroup = () => {
                                                     );
                                                 }}
                                             />
+                                            
                                             <button
                                                 onClick={() => handleDelete(item._id)}
-                                                className="btn btn-error">
+                                                className="btn btn-error btn-sm text-white">
                                                 Delete
                                             </button>
                                         </div>
